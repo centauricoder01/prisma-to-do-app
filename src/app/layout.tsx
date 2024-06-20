@@ -15,9 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("min-h-screen bg-background dark")}>
-        {children}
-      </body>
+      <body className={cn("min-h-screen bg-background")}>{children}</body>
     </html>
   );
 }

@@ -12,3 +12,27 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Domain {
+  id         Int         @id @default(autoincrement())
+  createdAt  DateTime    @default(now())
+  subDomains SubDomain[]
+}
+
+model SubDomain {
+  id       Int      @id @default(autoincrement())
+  name     String
+  date     DateTime @default(now())
+  task     String
+  detail   String
+  status   Boolean  @default(false)
+  domain   Domain   @relation(fields: [domainId], references: [id])
+  domainId Int
+}

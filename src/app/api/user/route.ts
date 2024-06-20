@@ -40,6 +40,3 @@ export async function POST(request: Request, response: Response) {
   );
 }
 
-export async function GET(response: Response) {
-  
-}

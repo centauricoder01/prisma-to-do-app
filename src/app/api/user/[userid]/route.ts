@@ -1,12 +1,17 @@
 import { NextResponse } from "next/server";
 import prisma from "@/db/db";
-import jsonwebtoken from "jsonwebtoken"
+import jsonwebtoken from "jsonwebtoken";
+
+interface Params {
+  userid: number;
+}
 
 export async function DELETE(response: Response) {}
 
-export async function GET(request: Request, response: Response) {
-  const { searchParams } = new URL(request.url);
-  const id = searchParams.get("userid");
+export async function GET(request: Request, { params }: { params: Params }) {
+  const id = params.userid;
+
+  console.log(id, "This is id");
 
   if (!id) {
     return NextResponse.json({ error: "ID is required" }, { status: 400 });
